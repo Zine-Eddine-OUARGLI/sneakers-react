@@ -36,31 +36,31 @@ export default function Footer() {
         <div className="flex flex-col gap-2 mt-8 md:mt-0">
           <h2 className="text-xl font-bold mb-2">Links</h2>
           <a
-            href="/sneakers-react/"
+            href="/"
             className="text-lg hover:text-amber-300 transition-colors duration-200"
           >
             Home
           </a>
           <a
-            href="/sneakers-react/shop"
+            href="/shop"
             className="text-lg hover:text-amber-300 transition-colors duration-200"
           >
             Shop
           </a>
           <a
-            href="/sneakers-react/about"
+            href="/about"
             className="text-lg hover:text-amber-300 transition-colors duration-200"
           >
             About
           </a>
           <a
-            href="/sneakers-react/blog"
+            href="/blog"
             className="text-lg hover:text-amber-300 transition-colors duration-200"
           >
             Blog
           </a>
           <a
-            href="/sneakers-react/contact"
+            href="/contact"
             className="text-lg hover:text-amber-300 transition-colors duration-200"
           >
             Contact
