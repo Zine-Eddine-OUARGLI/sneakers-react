@@ -15,31 +15,31 @@ export default function Navbar({ counterCart }) {
         </h2>
         <nav className="flex gap-6">
           <a
-            href="/"
+            href="/sneakers-react/"
             className="hover:text-amber-300 font-medium transition-colors duration-200"
           >
             Home
           </a>
           <a
-            href="/shop"
+            href="/sneakers-react/shop"
             className="hover:text-amber-300 font-medium transition-colors duration-200"
           >
             Shop
           </a>
           <a
-            href="/about"
+            href="/sneakers-react/about"
             className="hover:text-amber-300 font-medium transition-colors duration-200"
           >
             About
           </a>
           <a
-            href="/blog"
+            href="/sneakers-react/blog"
             className="hover:text-amber-300 font-medium transition-colors duration-200"
           >
             Blog
           </a>
           <a
-            href="/contact"
+            href="/sneakers-react/contact"
             className="hover:text-amber-300 font-medium transition-colors duration-200"
           >
             Contact
