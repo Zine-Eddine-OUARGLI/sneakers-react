@@ -51,7 +51,7 @@ export default function Home() {
             <KeyboardArrowRight className="bg-gray-200 rounded-2xl text-4xl mr-5 text-gray-600 hover:text-amber-400 transition-colors duration-200" />
           </button>
         </div>
-        <div className="grid grid-cols-10 gap-6 mb-12 mt-6 mx-5 overflow-scroll w-full">
+        <div className="grid grid-cols-10 gap-6 mb-12 mt-6 mx-5 overflow-scroll w-full scroll">
           {loading ? (
             <p>Loading...</p>
           ) : (
