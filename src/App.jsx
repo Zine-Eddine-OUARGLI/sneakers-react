@@ -8,7 +8,7 @@ import { Routes, Route } from "react-router";
 
 export default function App() {
   return (
-    <Routes>
+    <Routes basename="/sneakers-react">
       <Route path="/" element={<Home />} />
       <Route path="/shop" element={<Shop />} />
       <Route path="/home" element={<Home />} />
