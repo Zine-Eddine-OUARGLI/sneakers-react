@@ -4,13 +4,14 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { useParams } from "react-router";
+import { useCart } from "../context/CartContext";
 
 export default function ProductDetail() {
   const { id } = useParams();
   const [productData, setProductData] = useState(null);
   const [counter, setCounter] = useState(1);
-  const [counterCart, setCounterCart] = useState(0);
   const [image, setImage] = useState(null);
+  const { addToCart, cartCounter } = useCart();
 
   useEffect(() => {
     async function fetchProductById() {
@@ -54,7 +55,7 @@ export default function ProductDetail() {
 
   return (
     <div>
-      <Navbar counterCart={counterCart} />
+      <Navbar />
       <div className="flex gap-10 items-center justify-center my-16">
         <div className="flex flex-col gap-6 justify-center">
           <PhotoProvider>
@@ -115,7 +116,7 @@ export default function ProductDetail() {
             <button
               className="text-white bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 px-6 py-2 rounded-xl shadow hover:scale-105 hover:cursor-pointer hover:text-blue-900 transition-all duration-200 font-bold"
               onClick={() => {
-                setCounterCart(counterCart + counter);
+                addToCart(productData, counter);
                 setCounter(1);
               }}
             >

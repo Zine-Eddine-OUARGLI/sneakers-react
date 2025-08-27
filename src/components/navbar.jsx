@@ -6,10 +6,12 @@ import {
   UserButton,
   useClerk,
 } from "@clerk/clerk-react";
+import { useCart } from "../context/CartContext";
 
-export default function Navbar({ counterCart }) {
+export default function Navbar() {
   const clerk = useClerk();
-
+  const { cartCounter } = useCart();
+  console.log(cartCounter);
   return (
     <div className="flex justify-between items-center bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 text-white shadow-lg px-6 py-3">
       <div className="flex items-center gap-8">
@@ -50,28 +52,23 @@ export default function Navbar({ counterCart }) {
         </nav>
       </div>
       <div className="flex items-center self-end gap-6">
+        <a
+          className="relative hover:text-amber-300 transition-colors duration-200"
+          href="/cart"
+        >
+          {cartCounter > 0 && (
+            <div className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs px-2 py-0.5 shadow">
+              {cartCounter}
+            </div>
+          )}
+          <ShoppingCart size={32} />
+        </a>
         <SignedOut>
-          <button
-            className="relative hover:text-amber-300 transition-colors duration-200"
-            onClick={() => clerk.redirectToSignIn()}
-          >
-            {counterCart > 0 && (
-              <div className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs px-2 py-0.5 shadow">
-                {counterCart}
-              </div>
-            )}
-            <ShoppingCart size={32} />
-          </button>
+          <SignInButton className="hover:text-amber-300 hover:cursor-pointer font-semibold transition-colors duration-200" />
         </SignedOut>
-
-        <header>
-          <SignedOut>
-            <SignInButton className="hover:text-amber-300 font-semibold transition-colors duration-200" />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-        </header>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
     </div>
   );
