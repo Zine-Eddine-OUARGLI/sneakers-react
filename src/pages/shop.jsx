@@ -12,7 +12,7 @@ export default function Shop() {
   const [brands, setBrands] = useState([]);
   const [textSearch, setTextSearch] = useState("");
   const [sortBy, setSortBy] = useState("default");
-  const [itemsToShow, setItemsToShow] = useState(3);
+  const [itemsToShow, setItemsToShow] = useState(10);
 
   function updateBrands(brand) {
     setBrands((prevBrands) => {
@@ -50,6 +50,7 @@ export default function Shop() {
           setBrands([]);
           break;
       }
+      console.log(result, result2);
     } catch (e) {
       console.log(e);
     } finally {

@@ -6,7 +6,7 @@ import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import ProductInfo from "../components/shop/productInfo";
 import { FaAppStoreIos } from "react-icons/fa";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Home() {
   async function fetchProducts() {
@@ -34,6 +34,19 @@ export default function Home() {
     fetchProducts();
   }, []);
 
+  const scrollRef = useRef(null);
+
+  function scrollLeft() {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -300, behavior: "smooth" });
+    }
+  }
+  function scrollRight() {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 300, behavior: "smooth" });
+    }
+  }
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -43,24 +56,25 @@ export default function Home() {
       <HomeHeader />
       <div className="flex items-center justify-between mt-12 flex-col">
         <div className="flex space-y-6 w-full my-5 justify-between items-center">
-          <button>
+          <button onClick={scrollLeft}>
             <KeyboardArrowLeft className="bg-gray-200 rounded-2xl text-4xl ml-5 text-gray-600 hover:text-amber-400 transition-colors duration-200" />
           </button>
           <h1 className="text-4xl font-bold text-black hover:text-amber-400 transition-colors duration-200">
             Trending Products
           </h1>
-          <button>
+          <button onClick={scrollRight}>
             <KeyboardArrowRight className="bg-gray-200 rounded-2xl text-4xl mr-5 text-gray-600 hover:text-amber-400 transition-colors duration-200" />
           </button>
         </div>
-        <div className="grid grid-cols-10 gap-6 mb-12 mt-6 mx-5 overflow-scroll w-full scroll">
-          {loading ? (
-            <p>Loading...</p>
-          ) : (
-            products.map((product) => (
+        <div
+          className="overflow-x-auto w-full [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          ref={scrollRef}
+        >
+          <div className="grid grid-flow-col auto-cols-[minmax(200px,1fr)] gap-6 mb-12 mt-6 mx-5">
+            {products.slice(0, 10).map((product) => (
               <ProductInfo key={product.id} product={product} />
-            ))
-          )}
+            ))}
+          </div>
         </div>
       </div>
       <div className="flex items-center justify-between mt-12">

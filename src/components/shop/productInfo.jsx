@@ -1,6 +1,11 @@
 export default function ProductInfo({ product }) {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center hover:shadow-xl hover:border-blue-600 hover:border transition-all duration-100">
+    <div
+      onClick={() => {
+        window.location.href = `/shop/${product.id}`;
+      }}
+      className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center hover:shadow-xl hover:border-blue-600 hover:border transition-all duration-100 hover:cursor-pointer"
+    >
       <img
         src={product.thumbnail}
         alt="Product 1"

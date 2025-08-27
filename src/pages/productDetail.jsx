@@ -3,14 +3,32 @@ import "react-photo-view/dist/react-photo-view.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import { useParams } from "react-router";
+import { useEffect } from "react";
+import { use } from "react";
 
 export default function ProductDetail() {
-  let images = [
-    { source: "/imgs/image1.jpg", thumbnail: "/imgs/image1-thumbnail.jpg" },
-    { source: "/imgs/image2.jpg", thumbnail: "/imgs/image2-thumbnail.jpg" },
-    { source: "/imgs/image3.jpg", thumbnail: "/imgs/image3-thumbnail.jpg" },
-    { source: "/imgs/image4.jpg", thumbnail: "/imgs/image4-thumbnail.jpg" },
-  ];
+  const { id } = useParams();
+  const [productData, setProductData] = useState(null);
+
+  async function fetchProductById() {
+    try {
+      const response = await fetch(`https://dummyjson.com/products/${id}`);
+      const result = await response.json();
+      console.log(result);
+      setProductData(result);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(() => {
+    fetchProductById();
+  }, []);
+
+  if (!productData) {
+    return <div>Loading...</div>;
+  }
 
   const [counter, setCounter] = useState(1);
   const [counterCart, setCounterCart] = useState(0);
@@ -28,7 +46,7 @@ export default function ProductDetail() {
       <div className="flex gap-10 items-center justify-center my-16">
         <div className="flex flex-col gap-6 justify-center">
           <PhotoProvider>
-            <PhotoView src={image.source}>
+            <PhotoView src={productData.thumbnail}>
               <img
                 src={image.source}
                 alt=""
