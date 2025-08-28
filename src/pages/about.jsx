@@ -44,7 +44,7 @@ export default function About() {
 
       <div className="flex items-center mt-12">
         <img
-          src="\imgs\lebron-5048790_1280.jpg"
+          src="\imgs\versat.jpg"
           alt="Nike"
           className="w-[300px] rounded-xl shadow-lg border-2 border-blue-200 hover:border-cyan-400 transition-all duration-300 ml-20 mt-12"
         />
@@ -81,7 +81,7 @@ export default function About() {
         <img
           src="/imgs/nike-4.jpg"
           alt="nike"
-          className=" w-[300px] rounded-xl shadow-lg border-2 border-blue-200 hover:border-cyan-400 transition-all duration-300 mt-12"
+          className=" w-[300px] mb-6 rounded-xl shadow-lg border-2 border-blue-200 hover:border-cyan-400 transition-all duration-300 mt-12"
         />
       </div>
       <div className="max-w-4xl mx-auto px-6 py-12 flex flex-col justify-center items-center">
