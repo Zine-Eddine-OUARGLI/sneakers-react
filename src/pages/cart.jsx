@@ -1,12 +1,12 @@
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { useState, useEffect } from "react";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../context/cartContext";
 
 export default function Cart() {
   const { cartItems, removeFromCart, clearCart } = useCart();
   const [totalPrice, setTotalPrice] = useState(0);
-  
+
   useEffect(() => {
     const total = cartItems.reduce(
       (sum, item) => sum + item.price * item.quantity,
