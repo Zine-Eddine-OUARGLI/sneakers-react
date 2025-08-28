@@ -7,34 +7,11 @@ import ProductInfo from "../components/shop/productInfo";
 import HomeDownload from "../components/home/homeDownload";
 import HomeInfo from "../components/home/homeInfo";
 import HomeBestSeller from "../components/home/homeBestSeller";
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useProducts } from "../hooks/useProducts";
 
 export default function Home() {
-  async function fetchProducts() {
-    try {
-      setLoading(true);
-      const response = await fetch(
-        `https://dummyjson.com/products/category/mens-shoes`
-      );
-      const result = await response.json();
-
-      const response2 = await fetch(
-        `https://dummyjson.com/products/category/womens-shoes`
-      );
-      const result2 = await response2.json();
-      setProducts([...result.products, ...result2.products]);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      setLoading(false);
-    }
-  }
-  const [loading, setLoading] = useState(false);
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
+  const { products, loading, error } = useProducts();
   const scrollRef = useRef(null);
 
   function scrollLeft() {
@@ -47,6 +24,8 @@ export default function Home() {
       scrollRef.current.scrollBy({ left: 300, behavior: "smooth" });
     }
   }
+
+  if (error) return <h1>{error}</h1>;
 
   return (
     <div className="min-h-screen">
@@ -72,9 +51,15 @@ export default function Home() {
           ref={scrollRef}
         >
           <div className="grid grid-flow-col auto-cols-[minmax(200px,1fr)] gap-6 mb-12 mt-6 mx-5">
-            {products.slice(0, 10).map((product) => (
-              <ProductInfo key={product.id} product={product} />
-            ))}
+            {loading ? (
+              <div>Loading....</div>
+            ) : (
+              products
+                .slice(0, 10)
+                .map((product) => (
+                  <ProductInfo key={product.id} product={product} />
+                ))
+            )}
           </div>
         </div>
       </div>

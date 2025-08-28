@@ -1,0 +1,42 @@
+export const testimonials = [
+  {
+    id: 1,
+    name: "Giorno G.",
+    role: "Market Analytics",
+    image: "/imgs/men ph.jpg",
+    text: "“As a sneaker enthusiast, I appreciate the attention to detail and quality of Sneakers's collection. Each pair feels like a work of art.”",
+    rating: "10/10 recommend",
+  },
+  {
+    id: 2,
+    name: "Jonathan J.",
+    role: "Fashion Blogger",
+    image: "/imgs/m1.jpg",
+    text: "“Sneakers has become my go-to for stylish and comfortable sneakers. Their selection is always on point!”",
+    rating: "10/10 recommend",
+  },
+  {
+    id: 3,
+    name: "Joseph J.",
+    role: "Fitness Trainer",
+    image: "/imgs/m2.jpg",
+    text: "“I love how Sneakers combines performance and style. These sneakers have taken my workouts to the next level!”",
+    rating: "10/10 recommend",
+  },
+  {
+    id: 4,
+    name: "Jotaro K.",
+    role: "Graphic Designer",
+    image: "/imgs/m3.jpg",
+    text: "“Sneakers's unique designs always catch my eye. I love expressing my personality through their sneakers!”",
+    rating: "10/10 recommend",
+  },
+  {
+    id: 5,
+    name: "Josuke H.",
+    role: "Tech Enthusiast",
+    image: "/imgs/m4.jpg",
+    text: "“Sneakers has a fantastic range of sneakers that perfectly blend technology and style. I'm always impressed!”",
+    rating: "10/10 recommend",
+  },
+];

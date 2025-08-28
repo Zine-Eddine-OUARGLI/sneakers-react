@@ -11,7 +11,7 @@ export default function ProductDetail() {
   const [productData, setProductData] = useState(null);
   const [counter, setCounter] = useState(1);
   const [image, setImage] = useState(null);
-  const { addToCart, cartCounter } = useCart();
+  const { addToCart } = useCart();
 
   useEffect(() => {
     async function fetchProductById() {

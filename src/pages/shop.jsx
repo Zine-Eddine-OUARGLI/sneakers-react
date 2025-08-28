@@ -2,7 +2,7 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import SideBar from "../components/shop/sideBar";
 import SearchBar from "../components/shop/searchBar";
-import ProductInfo from "../components/shop/productInfo";
+import ShopList from "../components/shop/shopList";
 import { useState, useEffect } from "react";
 
 export default function Shop() {
@@ -13,6 +13,8 @@ export default function Shop() {
   const [textSearch, setTextSearch] = useState("");
   const [sortBy, setSortBy] = useState("default");
   const [itemsToShow, setItemsToShow] = useState(10);
+
+  // const {products, loading, brands} = useBlogs()
 
   function updateBrands(brand) {
     setBrands((prevBrands) => {
@@ -60,14 +62,14 @@ export default function Shop() {
 
   useEffect(() => {
     fetchProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categories]);
 
   let filteredProducts = products.filter((product) => {
     const matchesBrand = brands.length === 0 || brands.includes(product.brand);
     const matchesSearch =
       textSearch === "" ||
-      product.title.toLowerCase().includes(textSearch.toLowerCase()) ||
-      product.description.toLowerCase().includes(textSearch.toLowerCase());
+      product.title.toLowerCase().includes(textSearch.toLowerCase());
     return matchesBrand && matchesSearch;
   });
 
@@ -111,15 +113,7 @@ export default function Shop() {
             textSearch={textSearch}
             totalCount={filteredProducts.length}
           />
-          <div className="grid grid-cols-3 gap-5 m-5">
-            {loading ? (
-              <p className="text-center text-gray-600">Loading...</p>
-            ) : (
-              displayedProducts.map((product) => (
-                <ProductInfo key={product.id} product={product} />
-              ))
-            )}
-          </div>
+          <ShopList loading={loading} displayedProducts={displayedProducts} />
         </div>
       </div>
       <Footer />

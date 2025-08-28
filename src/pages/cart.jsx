@@ -6,6 +6,7 @@ import { useCart } from "../context/CartContext";
 export default function Cart() {
   const { cartItems, removeFromCart, clearCart } = useCart();
   const [totalPrice, setTotalPrice] = useState(0);
+  
   useEffect(() => {
     const total = cartItems.reduce(
       (sum, item) => sum + item.price * item.quantity,

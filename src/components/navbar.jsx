@@ -4,14 +4,11 @@ import {
   SignedOut,
   SignInButton,
   UserButton,
-  useClerk,
 } from "@clerk/clerk-react";
 import { useCart } from "../context/CartContext";
 
 export default function Navbar() {
-  const clerk = useClerk();
   const { cartCounter } = useCart();
-  console.log(cartCounter);
   return (
     <div className="flex justify-between items-center bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400 text-white shadow-lg px-6 py-3">
       <div className="flex items-center gap-8">

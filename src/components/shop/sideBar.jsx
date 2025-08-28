@@ -1,5 +1,4 @@
 import { FaAngleRight } from "react-icons/fa6";
-import { useState } from "react";
 
 export default function SideBar({
   updateCategories,
@@ -21,7 +20,9 @@ export default function SideBar({
       <ul className="space-y-2.5 text-gray-700">
         <li
           className="flex items-center justify-between hover:text-blue-600 transition-colors duration-200 hover:cursor-pointer"
-          onClick={() => updateCategories("mens-shoes")}
+          onClick={() => {
+            updateCategories("mens-shoes");
+          }}
         >
           <p>Men's shoes</p>
           <button>
@@ -30,7 +31,9 @@ export default function SideBar({
         </li>
         <li
           className="flex items-center justify-between hover:text-blue-600 transition-colors duration-200 hover:cursor-pointer"
-          onClick={() => updateCategories("womens-shoes")}
+          onClick={() => {
+            updateCategories("womens-shoes");
+          }}
         >
           <p>Women's shoes</p>
           <button>
@@ -39,7 +42,9 @@ export default function SideBar({
         </li>
         <li
           className="flex items-center justify-between hover:text-blue-600 transition-colors duration-200 hover:cursor-pointer"
-          onClick={() => updateCategories("All")}
+          onClick={() => {
+            updateCategories("All");
+          }}
         >
           <p>All</p>
           <button>
