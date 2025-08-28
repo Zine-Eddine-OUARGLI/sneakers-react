@@ -5,7 +5,7 @@ import {
   SignInButton,
   UserButton,
 } from "@clerk/clerk-react";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../context/cartContext";
 
 export default function Navbar() {
   const { cartCounter } = useCart();

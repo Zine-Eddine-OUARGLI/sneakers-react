@@ -4,7 +4,7 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { useParams } from "react-router";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../context/cartContext";
 
 export default function ProductDetail() {
   const { id } = useParams();
